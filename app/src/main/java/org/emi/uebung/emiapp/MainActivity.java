@@ -30,6 +30,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final Button buttonFib = findViewById(R.id.button2);
+        buttonFib.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                String idk = calculateFibonacciRow();
+            }
+        });
 
     }
+        public static String calculateFibonacciRow(){
+            int[] row = new int[30];
+            row[0]=0;
+            row[1]=1;
+            for(int i=2;i <= row.length; i++){
+                row[i]=row[i-1]+row[i-2];
+            }
+            String FibinacciRowString = "";
+            for(int elem : row){
+                FibinacciRowString = FibinacciRowString + Integer.toString(row[elem]) + "\n";
+            }
+            Log.d("Output: ", FibinacciRowString );
+            return FibinacciRowString;
+        }
+
 }
+
+
+
+
