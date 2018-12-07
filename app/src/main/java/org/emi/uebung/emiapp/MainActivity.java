@@ -2,9 +2,11 @@ package org.emi.uebung.emiapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,27 +32,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        final TextView FibTextView = findViewById(R.id.textView4);
+        FibTextView.setMovementMethod(new ScrollingMovementMethod());
         final Button buttonFib = findViewById(R.id.button2);
         buttonFib.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String idk = calculateFibonacciRow();
+                FibTextView.setText(calculateFibonacciRow());
             }
         });
+
+
 
     }
         public static String calculateFibonacciRow(){
             int[] row = new int[30];
             row[0]=0;
             row[1]=1;
-            for(int i=2;i <= row.length; i++){
+            for(int i=2;i < row.length; i++){
                 row[i]=row[i-1]+row[i-2];
             }
-            String FibinacciRowString = "";
-            for(int elem : row){
-                FibinacciRowString = FibinacciRowString + Integer.toString(row[elem]) + "\n";
+            String FibunacciRowString = "";
+            for(int i = 0; i < row.length; i++){
+                FibunacciRowString = FibunacciRowString + Integer.toString(row[i]) + "\n";
             }
-            Log.d("Output: ", FibinacciRowString );
-            return FibinacciRowString;
+            Log.d("Output: ", FibunacciRowString );
+            return FibunacciRowString;
         }
 
 }
