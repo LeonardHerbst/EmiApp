@@ -6,6 +6,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,9 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button button = findViewById(R.id.button1);
+        final TextView digitSumTextView = findViewById(R.id.textView2);
+        final EditText digitSumInput = findViewById(R.id.editText);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String inputNumber = Integer.toString(1234);
+                String inputNumber = digitSumInput.getText().toString();
                 int[] digits = new int[inputNumber.length()];
                 int digitSum = 0;
                 for (int i = 0; i < digits.length; i++) {
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                     digitSum += digits[i];
                 }
 
+
+                digitSumTextView.setText(Integer.toString(digitSum));
                 Log.d("Output: ", Integer.toString(digitSum) );
                 Log.d("count: ", Integer.toString(digits.length));
 
